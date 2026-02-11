@@ -104,27 +104,27 @@ export default function StoryScroll() {
             {/* ──── CHAPTER 1: The Day We Met ──── */}
             <section className="relative min-h-screen flex items-center chapter-1-bg overflow-hidden">
                 <motion.div
-                    className="absolute top-20 right-10 opacity-20 text-starlight-gold"
+                    className="absolute top-20 right-10 opacity-30 text-starlight-gold"
                     style={{ y: ch1Parallax1 }}
                 >
-                    <Sparkles size={80} strokeWidth={1} className="sm:w-32 sm:h-32" />
+                    <Sparkles size={120} strokeWidth={1} className="w-[80px] h-[80px] sm:w-[150px] sm:h-[150px]" />
                 </motion.div>
                 <motion.div
-                    className="absolute bottom-20 left-10 opacity-10 text-electric-fuchsia"
+                    className="absolute bottom-20 left-10 opacity-20 text-electric-fuchsia"
                     style={{ y: ch1Parallax2 }}
                 >
-                    <Stars size={120} strokeWidth={0.5} className="sm:w-48 sm:h-48" />
+                    <Stars size={180} strokeWidth={0.5} className="w-[100px] h-[100px] sm:w-[200px] sm:h-[200px]" />
                 </motion.div>
 
-                <div className="container mx-auto px-4 sm:px-8 py-16 sm:py-32 max-w-4xl">
+                <div className="container mx-auto px-6 sm:px-8 py-20 sm:py-32 max-w-5xl">
                     <AnimatedSection>
-                        <p className="text-electric-fuchsia/80 text-xs sm:text-sm tracking-[0.3em] uppercase font-medium mb-4 sm:mb-6">
+                        <p className="text-electric-fuchsia/80 text-xs sm:text-sm tracking-[0.4em] uppercase font-medium mb-6">
                             Chapter One
                         </p>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.2}>
-                        <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-bold text-white text-glow-premium leading-tight">
+                        <h2 className="font-serif text-5xl sm:text-7xl md:text-9xl font-bold text-white text-glow-premium leading-tight">
                             The Day
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-fuchsia to-vivid-violet">
@@ -138,7 +138,7 @@ export default function StoryScroll() {
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.5} direction="left">
-                        <p className="mt-8 sm:mt-10 text-white/80 text-base sm:text-xl leading-relaxed max-w-2xl font-light tracking-wide">
+                        <p className="mt-10 sm:mt-16 text-white/80 text-lg sm:text-2xl leading-relaxed max-w-3xl font-light tracking-wide">
                             There are moments that change everything — a glance, a smile,
                             a heartbeat that whispers{" "}
                             <span className="text-starlight-gold italic">&quot;this is it.&quot;</span>{" "}
@@ -148,7 +148,7 @@ export default function StoryScroll() {
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.7} direction="left">
-                        <p className="mt-6 text-white/50 text-sm sm:text-lg leading-relaxed max-w-2xl font-light">
+                        <p className="mt-8 text-white/50 text-base sm:text-xl leading-relaxed max-w-3xl font-light">
                             I remember the way the light caught your eyes, how the world
                             went quiet for just a moment, and how something deep inside me
                             knew — I was home.
@@ -156,10 +156,10 @@ export default function StoryScroll() {
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.9} direction="scale">
-                        <div className="mt-12 sm:mt-16 glass-premium rounded-2xl p-6 sm:p-10 max-w-md glow-purple relative overflow-hidden group">
+                        <div className="mt-16 sm:mt-24 glass-premium rounded-3xl p-8 sm:p-12 max-w-2xl glow-purple relative overflow-hidden group border border-white/10">
                             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-vivid-violet to-electric-fuchsia" />
-                            <Quote className="absolute top-4 right-4 text-white/10 w-8 h-8 sm:w-12 sm:h-12" />
-                            <p className="font-serif text-lg sm:text-2xl text-white/90 italic text-center leading-relaxed relative z-10">
+                            <Quote className="absolute top-6 right-6 text-white/10 w-12 h-12 sm:w-16 sm:h-16" />
+                            <p className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white/90 italic text-center leading-relaxed relative z-10">
                                 &quot;Some love stories don&apos;t start with a bang — they start with
                                 a quiet knowing.&quot;
                             </p>
@@ -170,15 +170,15 @@ export default function StoryScroll() {
 
             {/* ──── CHAPTER 2: Our Favorite Memories ──── */}
             <section className="relative min-h-screen chapter-2-bg overflow-hidden">
-                <div className="container mx-auto px-4 sm:px-8 py-16 sm:py-32 max-w-6xl">
+                <div className="container mx-auto px-6 sm:px-8 py-20 sm:py-32 max-w-7xl">
                     <AnimatedSection>
-                        <p className="text-starlight-gold/80 text-xs sm:text-sm tracking-[0.3em] uppercase font-medium mb-4 sm:mb-6 text-center">
+                        <p className="text-starlight-gold/80 text-xs sm:text-sm tracking-[0.4em] uppercase font-medium mb-6 text-center">
                             Chapter Two
                         </p>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.2}>
-                        <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-bold text-white text-glow-gold text-center leading-tight">
+                        <h2 className="font-serif text-5xl sm:text-7xl md:text-9xl font-bold text-white text-glow-gold text-center leading-tight">
                             Our Favorite
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-starlight-gold to-rose-gold">
@@ -188,21 +188,23 @@ export default function StoryScroll() {
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.3}>
-                        <p className="mt-6 sm:mt-8 text-white/60 text-center text-sm sm:text-lg max-w-xl mx-auto font-light">
+                        <p className="mt-10 sm:mt-16 text-white/60 text-center text-lg sm:text-2xl max-w-2xl mx-auto font-light">
                             Every moment with you is a treasure. Here are just a few of
                             the countless memories I hold close to my heart.
                         </p>
                     </AnimatedSection>
 
                     {/* Memory Cards Grid */}
-                    <div className="mt-12 sm:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <div className="mt-20 sm:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 px-4 sm:px-0">
                         {memories.map((memory, i) => (
                             <AnimatedSection
                                 key={memory.title}
                                 delay={0.1 * i}
                                 direction="scale"
                             >
-                                <MemoryCard {...memory} />
+                                <div className="transform hover:scale-105 transition-transform duration-500">
+                                    <MemoryCard {...memory} />
+                                </div>
                             </AnimatedSection>
                         ))}
                     </div>
@@ -212,27 +214,27 @@ export default function StoryScroll() {
             {/* ──── CHAPTER 3: Why I Love You ──── */}
             <section className="relative min-h-screen chapter-3-bg overflow-hidden">
                 <motion.div
-                    className="absolute top-32 left-8 opacity-10 text-electric-fuchsia"
+                    className="absolute top-32 left-8 opacity-20 text-electric-fuchsia"
                     style={{ y: ch3Parallax1 }}
                 >
-                    <Heart size={80} strokeWidth={1} className="sm:w-36 sm:h-36" />
+                    <Heart size={140} strokeWidth={1} className="w-[100px] h-[100px] sm:w-[200px] sm:h-[200px]" />
                 </motion.div>
                 <motion.div
-                    className="absolute bottom-32 right-8 opacity-10 text-vivid-violet"
+                    className="absolute bottom-32 right-8 opacity-20 text-vivid-violet"
                     style={{ y: ch3Parallax2 }}
                 >
-                    <Heart size={60} strokeWidth={1} fill="currentColor" className="sm:w-24 sm:h-24" />
+                    <Heart size={100} strokeWidth={1} fill="currentColor" className="w-[80px] h-[80px] sm:w-[150px] sm:h-[150px]" />
                 </motion.div>
 
-                <div className="container mx-auto px-4 sm:px-8 py-16 sm:py-32 max-w-4xl">
+                <div className="container mx-auto px-6 sm:px-8 py-20 sm:py-32 max-w-5xl">
                     <AnimatedSection>
-                        <p className="text-rose-gold/80 text-xs sm:text-sm tracking-[0.3em] uppercase font-medium mb-4 sm:mb-6 text-center">
+                        <p className="text-rose-gold/80 text-xs sm:text-sm tracking-[0.4em] uppercase font-medium mb-6 text-center">
                             Chapter Three
                         </p>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.2}>
-                        <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-bold text-white text-glow-premium text-center leading-tight">
+                        <h2 className="font-serif text-5xl sm:text-7xl md:text-9xl font-bold text-white text-glow-premium text-center leading-tight">
                             Why I
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-gold to-electric-fuchsia">
@@ -241,18 +243,18 @@ export default function StoryScroll() {
                         </h2>
                     </AnimatedSection>
 
-                    <div className="mt-12 sm:mt-20 space-y-4 sm:space-y-8">
+                    <div className="mt-20 sm:mt-24 space-y-8 sm:space-y-12">
                         {loveReasons.map((reason, i) => (
                             <AnimatedSection
                                 key={i}
                                 delay={0.1 * i}
                                 direction={i % 2 === 0 ? "left" : "right"}
                             >
-                                <div className="glass-card rounded-2xl p-5 sm:p-8 hover:border-electric-fuchsia/30 transition-all duration-500 group relative overflow-hidden">
+                                <div className="glass-card rounded-3xl p-8 sm:p-12 hover:border-electric-fuchsia/50 transition-all duration-500 group relative overflow-hidden transform hover:-translate-y-2">
                                     <div className="absolute inset-0 bg-gradient-to-r from-vivid-violet/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className="flex items-start gap-4 sm:gap-6 relative z-10">
-                                        <Heart className="text-electric-fuchsia w-6 h-6 sm:w-8 sm:h-8 mt-1 group-hover:scale-110 group-hover:fill-electric-fuchsia/20 transition-all duration-300 flex-shrink-0" />
-                                        <p className="font-serif text-base sm:text-xl md:text-2xl text-white/90 italic leading-relaxed">
+                                    <div className="flex items-start gap-6 sm:gap-8 relative z-10">
+                                        <Heart className="text-electric-fuchsia w-10 h-10 sm:w-14 sm:h-14 mt-1 group-hover:scale-110 group-hover:fill-electric-fuchsia/20 transition-all duration-300 flex-shrink-0" />
+                                        <p className="font-serif text-xl sm:text-2xl md:text-3xl text-white/90 italic leading-relaxed">
                                             {reason}
                                         </p>
                                     </div>
@@ -267,59 +269,59 @@ export default function StoryScroll() {
             <section className="relative min-h-screen chapter-4-bg overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(219,39,119,0.2),transparent_70%)]" />
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-8 py-16 sm:py-32 max-w-3xl text-center">
+                <div className="relative z-10 container mx-auto px-6 sm:px-8 py-20 sm:py-32 max-w-4xl text-center">
                     <AnimatedSection>
-                        <p className="text-starlight-gold/80 text-xs sm:text-sm tracking-[0.3em] uppercase font-medium mb-4 sm:mb-6">
+                        <p className="text-starlight-gold/80 text-xs sm:text-sm tracking-[0.4em] uppercase font-medium mb-6">
                             The Final Chapter
                         </p>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.2}>
-                        <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-bold text-white text-glow-gold leading-tight">
+                        <h2 className="font-serif text-5xl sm:text-7xl md:text-9xl font-bold text-white text-glow-gold leading-tight">
                             Forever
                             <span className="text-starlight-gold">?</span>
                         </h2>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.4} direction="scale">
-                        <div className="mt-10 sm:mt-18 relative">
+                        <div className="mt-20 sm:mt-24 relative">
                             <div className="absolute inset-0 blur-3xl bg-electric-fuchsia/20 rounded-full scale-150 animate-pulse" />
-                            <BeatingHeart size={140} className="relative z-10 drop-shadow-2xl sm:w-[180px] sm:h-[180px]" />
+                            <BeatingHeart size={200} className="relative z-10 drop-shadow-2xl w-[150px] h-[150px] sm:w-[250px] sm:h-[250px]" />
                         </div>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.6}>
-                        <div className="mt-10 sm:mt-18">
+                        <div className="mt-16 sm:mt-24">
                             <TypewriterText
                                 text="Every love story is beautiful, but ours is my favorite. You are my today and all of my tomorrows. I choose you — and I'll keep choosing you, every single day."
                                 speed={40}
-                                className="font-serif text-lg sm:text-2xl md:text-3xl text-white/90 italic leading-relaxed px-2"
+                                className="font-serif text-2xl sm:text-3xl md:text-4xl text-white/90 italic leading-relaxed px-4"
                             />
                         </div>
                     </AnimatedSection>
 
                     <AnimatedSection delay={0.8}>
-                        <div className="mt-10 sm:mt-18 flex items-center justify-center gap-4 sm:gap-6 opacity-60">
-                            <div className="h-px w-16 sm:w-24 bg-gradient-to-r from-transparent to-starlight-gold" />
-                            <InfinityIcon className="text-starlight-gold w-6 h-6 sm:w-8 sm:h-8" />
-                            <div className="h-px w-16 sm:w-24 bg-gradient-to-l from-transparent to-starlight-gold" />
+                        <div className="mt-16 sm:mt-24 flex items-center justify-center gap-6 sm:gap-8 opacity-60">
+                            <div className="h-px w-24 sm:w-32 bg-gradient-to-r from-transparent to-starlight-gold" />
+                            <InfinityIcon className="text-starlight-gold w-10 h-10 sm:w-12 sm:h-12" />
+                            <div className="h-px w-24 sm:w-32 bg-gradient-to-l from-transparent to-starlight-gold" />
                         </div>
                     </AnimatedSection>
 
                     {/* Confetti CTA */}
                     <AnimatedSection delay={1.0} direction="scale">
-                        <div className="mt-10 sm:mt-16">
+                        <div className="mt-16 sm:mt-20">
                             <ConfettiBurst />
                         </div>
                     </AnimatedSection>
 
                     {/* Footer signature */}
                     <AnimatedSection delay={1.2}>
-                        <div className="mt-16 sm:mt-28 space-y-2 sm:space-y-3">
-                            <p className="text-white/40 text-xs sm:text-sm font-light tracking-widest uppercase">
-                                Made with <Heart className="inline w-3 h-3 text-electric-fuchsia mx-1 fill-current" /> just for you
+                        <div className="mt-24 sm:mt-32 space-y-3 sm:space-y-4">
+                            <p className="text-white/40 text-sm sm:text-base font-light tracking-widest uppercase">
+                                Made with <Heart className="inline w-4 h-4 text-electric-fuchsia mx-1 fill-current" /> just for you
                             </p>
-                            <p className="text-white/20 text-[10px] sm:text-xs">
+                            <p className="text-white/20 text-xs sm:text-sm">
                                 Happy Valentine&apos;s Day 2026
                             </p>
                         </div>

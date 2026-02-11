@@ -109,7 +109,7 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
 
             {/* Envelope Container Wrapper with Responsive Scaling */}
             <div
-                className="pointer-events-auto relative cursor-pointer group hover:scale-105 transition-transform duration-500 scale-[0.85] sm:scale-100"
+                className="pointer-events-auto relative cursor-pointer group hover:scale-105 transition-transform duration-500 scale-[0.85] sm:scale-100 lg:scale-125"
                 onClick={handleOpen}
             >
                 <div
