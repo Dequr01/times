@@ -16,14 +16,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "A Love Letter For You | Valentine's Day",
-  description:
-    "An intimate, cinematic love story experience — crafted with care, just for you. Open your letter and discover a world of memories and promises.",
-  keywords: ["valentine", "love letter", "romantic", "interactive story"],
+  title: "For You, My Love ❤️",
+  description: "A story written in the stars, just for us.",
   openGraph: {
-    title: "A Love Letter For You ❤️",
-    description:
-      "An intimate, cinematic love story experience — crafted with care, just for you.",
+    title: "For You, My Love ❤️",
+    description: "A story written in the stars, just for us.",
     type: "website",
     locale: "en_US",
     siteName: "Love Letter",
