@@ -11,7 +11,9 @@ interface EnvelopeOpenProps {
 
 export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
     const [isOpening, setIsOpening] = useState(false);
+    const [isLetterReady, setIsLetterReady] = useState(false); // New state: Letter is out and waiting
     const [isComplete, setIsComplete] = useState(false);
+
     const envelopeRef = useRef<HTMLDivElement>(null);
     const flapRef = useRef<HTMLDivElement>(null);
     const letterRef = useRef<HTMLDivElement>(null);
@@ -20,13 +22,13 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
     // Dynamic Names from Environment Variables
     const womanName = process.env.NEXT_PUBLIC_WOMAN_NAME || "My Love";
 
+    // Step 1: Open Envelope and Extract Letter (Auto or Click)
     const handleOpen = useCallback(() => {
-        if (isOpening || isComplete) return;
+        if (isOpening || isComplete || isLetterReady) return;
         setIsOpening(true);
 
         if (prefersReducedMotion()) {
-            setIsComplete(true);
-            setTimeout(onComplete, 300);
+            setIsLetterReady(true);
             return;
         }
 
@@ -34,71 +36,95 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
             easing: "easeInOutQuad",
         });
 
-        // Step 1: Background blur overlay
+        // Background blur overlay
         tl.add({
             targets: overlayRef.current,
             opacity: [0, 1],
             duration: 600,
         });
 
-        // Step 2: Envelope lifts and tilts slightly (Preparation)
+        // Envelope lifts and tilts
         tl.add(
             {
                 targets: envelopeRef.current,
                 translateY: -30,
                 scale: 1.05,
-                rotateX: 10, // Slight 3D tilt
+                rotateX: 10,
                 duration: 600,
                 easing: "easeOutBack",
             },
             "-=400"
         );
 
-        // Step 3: Flap snaps open (Spring physics)
+        // Flap snaps open
         tl.add({
             targets: flapRef.current,
             rotateX: -180,
             duration: 800,
-            easing: "spring(1, 80, 10, 0)", // Bouncy spring
+            easing: "spring(1, 80, 10, 0)",
         });
 
-        // Step 4: Card "Roll Out" - Slides up, tilts, and floats
+        // Letter "Rolls Out" to a readable position
         tl.add(
             {
                 targets: letterRef.current,
-                translateY: -220,
-                rotateZ: [0, -2], // Slight effortless tilt
-                scale: [0.9, 1.0], // Expands as it comes out
+                translateY: -220, // Slide out
+                rotateZ: [0, -2], // Slight tilt
+                scale: [0.9, 1.1], // Scale up slightly to be readable
                 opacity: [0, 1],
                 duration: 900,
-                easing: "easeOutExpo", // Fast exit, slow settle
+                easing: "easeOutExpo",
+                complete: () => setIsLetterReady(true), // Ready for user interaction
             },
             "-=600"
         );
 
-        // Step 5: Glow Pulse & Transition
+        // Glow pulse on envelope to highlight interaction
         tl.add({
             targets: envelopeRef.current,
             boxShadow: [
-                "0 30px 60px -12px rgba(0, 0, 0, 0.6)",
                 "0 0 100px rgba(217,70,239,0.4), 0 0 140px rgba(251,191,36,0.3)",
             ],
             duration: 800,
         });
 
-        // Step 6: Fade out & Complete
+    }, [isOpening, isComplete, isLetterReady]);
+
+    // Step 2: Unfold Letter and Transition (Triggered by Clicking Letter)
+    const handleLetterClick = useCallback((e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent bubbling causing issues
+        if (!isLetterReady || isComplete) return;
+
+        const tl = anime.timeline({
+            easing: "easeInOutCubic",
+            complete: () => {
+                setIsComplete(true);
+                onComplete(); // Mount StoryScroll
+            }
+        });
+
+        // 1. Envelope and background fade out + scale down (Vanishing)
         tl.add({
             targets: [envelopeRef.current, overlayRef.current],
             opacity: 0,
-            scale: 1.1,
+            scale: 0.9,
             duration: 600,
             easing: "easeInQuad",
-            complete: () => {
-                setIsComplete(true);
-                onComplete();
-            },
         });
-    }, [isOpening, isComplete, onComplete]);
+
+        // 2. Letter "Unfolds" (Expands to fill screen)
+        // We simulate this by scaling it up massively
+        tl.add({
+            targets: letterRef.current,
+            scale: [1.1, 10], // Massive scale to fill screen
+            rotateZ: 0, // Straighten
+            translateY: -300, // Move up
+            filter: "brightness(2) opacity(0)", // Fade to white/transparent
+            duration: 1000,
+            offset: "-=500"
+        });
+
+    }, [isLetterReady, isComplete, onComplete]);
 
     if (isComplete) return null;
 
@@ -126,7 +152,7 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
                         className="absolute top-0 left-0 w-0 h-0 border-l-[160px] border-l-transparent border-t-[100px] border-t-[#271a42] border-r-[160px] border-r-transparent origin-top z-40 drop-shadow-2xl"
                         style={{
                             transformStyle: "preserve-3d",
-                            borderTopColor: "#2e1065", // Cosmic purple flap color
+                            borderTopColor: "#2e1065",
                             filter: "brightness(1.1)",
                         }}
                     >
@@ -136,21 +162,22 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
                         </div>
                     </div>
 
-                    {/* The Letter (Hidden Inside) */}
+                    {/* The Letter (Interactive) */}
                     <div
                         ref={letterRef}
-                        className="absolute left-3 right-3 top-2 h-40 bg-[#fff1f2] rounded shadow-md flex items-center justify-center z-20 origin-bottom texture-paper border border-rose-100/50"
+                        className={`absolute left-3 right-3 top-2 h-40 bg-[#fff1f2] rounded shadow-md flex items-center justify-center z-50 origin-center texture-paper border border-rose-100/50 ${isLetterReady ? 'cursor-pointer hover:scale-105 hover:rotate-0 transition-transform duration-300 shadow-[0_0_50px_rgba(255,255,255,0.6)]' : ''}`}
                         style={{
                             boxShadow: "inset 0 0 20px rgba(0,0,0,0.05)",
                         }}
+                        onClick={handleLetterClick} // CLICK HANDLER
                     >
-                        <div className="text-center p-6 w-full">
+                        <div className="text-center p-6 w-full pointer-events-none"> {/* Text non-interactive */}
                             <p className="font-serif text-slate-800 font-bold text-xl tracking-wide mb-2 opacity-90">
                                 For {womanName}
                             </p>
                             <div className="h-px w-12 bg-rose-300 mx-auto mb-2" />
                             <p className="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-medium opacity-70">
-                                Open Me
+                                {isLetterReady ? "Click to Read" : "Open Me"}
                             </p>
                         </div>
                     </div>
@@ -169,9 +196,9 @@ export default function EnvelopeOpen({ onComplete }: EnvelopeOpenProps) {
                     <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent z-10 rounded-lg pointer-events-none mix-blend-multiply" />
                 </div>
 
-                <div className="mt-16 text-center space-y-2 opacity-80">
+                <div className={`mt-16 text-center space-y-2 opacity-80 transition-opacity duration-300 ${isLetterReady ? 'opacity-0' : 'opacity-100'}`}>
                     <p className="text-starlight-gold/60 text-sm tracking-widest uppercase animate-pulse">
-                        Tap to open
+                        Tap Envelope
                     </p>
                 </div>
             </div>
