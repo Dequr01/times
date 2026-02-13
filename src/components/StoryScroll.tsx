@@ -319,7 +319,7 @@ export default function StoryScroll() {
                     <AnimatedSection delay={1.2}>
                         <div className="mt-24 sm:mt-32 space-y-3 sm:space-y-4">
                             <p className="text-white/40 text-sm sm:text-base font-light tracking-widest uppercase">
-                                Made with <Heart className="inline w-4 h-4 text-electric-fuchsia mx-1 fill-current" /> just for you
+                                Made with <Heart className="inline w-4 h-4 text-electric-fuchsia mx-1 fill-current" /> for {process.env.NEXT_PUBLIC_WOMAN_NAME || "You"} by {process.env.NEXT_PUBLIC_MAN_NAME || "Me"}
                             </p>
                             <p className="text-white/20 text-xs sm:text-sm">
                                 Happy Valentine&apos;s Day 2026
